@@ -21,7 +21,7 @@
             <div id="t1">
               <el-button @click="handleClick(scope.row.id)" type="text" size="small">删除</el-button>
               <el-button @click="modification(scope.row.id)" type="text" size="small">修改</el-button>
-              <el-button @click="resetpasswords = true" type="text" size="small">重置密码</el-button>
+              <el-button @click="ruleForm.username=scope.row.username;resetpasswords = true" type="text" size="small">重置密码</el-button>
             </div>
           </template>
         </el-table-column>
@@ -78,12 +78,30 @@
         </div>
       </el-dialog>
 
-      <el-dialog title="重置密码" :visible.sync="resetpasswords" width="30%" :before-close="handleClose">
-        <input type="password">
-        <span slot="footer" class="dialog-footer">
-          <el-button @click="resetpasswords = false">取 消</el-button>
-          <el-button type="primary" @click="resetpasswords = false">确 定</el-button>
-        </span>
+      <el-dialog
+        title="重置密码"
+        :visible.sync="resetpasswords"
+        width="30%"
+      >
+        <el-form
+          :model="ruleForm"
+          status-icon
+          :rules="rules"
+          ref="ruleForm"
+          label-width="100px"
+          class="demo-ruleForm"
+        >
+          <el-form-item label="密码" prop="pass">
+            <el-input type="password" v-model="ruleForm.pass" autocomplete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="确认密码" prop="checkPass">
+            <el-input type="password" v-model="ruleForm.checkPass" autocomplete="off"></el-input>
+          </el-form-item>
+          <el-form-item>
+            <el-button @click="handleReset('ruleForm')">取 消</el-button>
+          <el-button type="primary" @click="revisePass('ruleForm')">确 定</el-button>
+          </el-form-item>
+        </el-form>
       </el-dialog>
 
       <el-pagination
@@ -110,6 +128,25 @@ export default {
   },
 
   data() {
+    var validatePass = (rule, value, callback) => {
+        if (value === '') {
+          callback(new Error('请输入密码'));
+        } else {
+          if (this.ruleForm.checkPass !== '') {
+            this.$refs.ruleForm.validateField('checkPass');
+          }
+          callback();
+        }
+      };
+      var validatePass2 = (rule, value, callback) => {
+        if (value === '') {
+          callback(new Error('请再次输入密码'));
+        } else if (value !== this.ruleForm.pass) {
+          callback(new Error('两次输入密码不一致!'));
+        } else {
+          callback();
+        }
+      };
     return {
       key: "",
       current: 0,
@@ -125,7 +162,20 @@ export default {
         // type: [],
       },
       formLabelWidth: "120px",
-      tableData: []
+      tableData: [],
+      ruleForm: {
+          pass: '',
+          checkPass: '',
+          username: ''
+        },
+        rules: {
+          pass: [
+            { validator: validatePass, trigger: 'blur' }
+          ],
+          checkPass: [
+            { validator: validatePass2, trigger: 'blur' }
+          ]
+        }
     };
   },
 
@@ -208,13 +258,34 @@ export default {
             message: "已取消删除"
           });
         });
-    }
-  },
-  //当前页改变
+    },
+
+    //当前页改变
   currentChange(val) {
     this.current = val - 1;
     this.getProjectList();
-  }
+  },
+
+  //重置密码
+  revisePass(formName){
+    this.$refs[formName].validate((valid) => {
+          if (valid) {
+            alert(1)
+            api.revisePass({password:this.ruleForm.pass,username:this.ruleForm.username}).then(Response => {
+              console.log(Response.data)
+            })
+            this.resetpasswords = false
+          }
+        });
+  },
+
+  //重置表单
+    handleReset(name) {
+      this.resetpasswords = false
+      this.ruleForm = {}
+      this.$refs[name].resetFields()
+    },
+  },
 };
 </script>
 
@@ -245,5 +316,4 @@ export default {
 #t1 :first-child {
   margin: 0 4%;
 }
-
 </style>

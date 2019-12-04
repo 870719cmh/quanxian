@@ -9,7 +9,7 @@ import axios from 'axios';
 import vueAxios from 'vue-axios';
 Vue.use(vueAxios,axios);
 axios.defaults.baseURL = process.env.API_HOST;
-
+axios.defaults.headers.common['Authorization'] = "bearer " + localStorage.getItem("access_token");
 Vue.config.productionTip = false
 
 Vue.use(ElementUI);

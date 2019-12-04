@@ -25,7 +25,7 @@
 
 <script>
 import api from "@/API/api";
-
+import axios from 'axios'
 export default {
   name: "Auser",
   data() {
@@ -44,7 +44,6 @@ export default {
       this.$refs[formName].validate(valid => {
         if (valid) {
           api.login(this.info.name,this.info.password).then(response => {
-             alert("name"+this.info.name+"access_token"+response.data.access_token);
             if (response.data.access_token) {
               localStorage.setItem('name',this.info.name)
               localStorage.setItem('access_token',response.data.access_token)
