@@ -73,11 +73,13 @@ methods:{
  },
  //提交
  cancelReport(){
-      
     api.createUser(this.form.mobile,this.form.password,this.form.username).then(response=>{
       alert(response.data.message);
       if(response.data.message=="成功"){
-       dialogFormVisible = false;
+       this.dialogFormVisible = false;
+      //自动刷新
+      this.$router.go(0);
+   
       };
    })
 

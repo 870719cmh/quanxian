@@ -19,7 +19,7 @@
         </el-table-column>
       </el-table>
 
-      <el-dialog title="修改用户信息 " :visible.sync="dialogFormVisible"  >
+      <el-dialog title="修改角色信息 " :visible.sync="dialogFormVisible"  >
       <el-form :model="form" style="margin-right:10%" > 
         <el-form-item label="ID" :label-width="formLabelWidth">
           <el-input v-model="form.id" autocomplete="off" style="width: 350px;"></el-input>

@@ -17,7 +17,7 @@
             <div id="t1">
                  <el-button @click="handleClick(scope.row.id)" type="text" size="small" >删除</el-button>
                  <el-button  @click="modification(scope.row.id)" type="text" size="small">修改</el-button> 
-                 <!-- <el-button  @click="resetpasswords = true" type="text" size="small">重置密码</el-button>  -->
+                 <el-button  @click="resetpasswords = true" type="text" size="small">重置密码</el-button> 
             </div>
           </template>
         </el-table-column>
@@ -158,7 +158,8 @@ export default {
      //修改用户信息
       updateUser(){
         api.updateUser(this.form.id,this.form.email,this.form.mobile,this.form.username).then(Response=>{
-          alert(Response.data.message)
+          alert(Response.data.message);
+           this.getUser();
         })
       },
       confirm(){
@@ -167,7 +168,8 @@ export default {
       //删除用户信息
       deleteUser(id){
         api.deleteUser(id).then(Response=>{
-         alert(Response.data.message)
+         alert(Response.data.message);
+         this.getUser();
         })
       },
       
