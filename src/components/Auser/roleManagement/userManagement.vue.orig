@@ -5,7 +5,8 @@
         :data="signData"
         border
         style="width: 100%"
-        header-cell-style="background:#c0d6dbb3" >
+        header-cell-style="background:#c0d6dbb3"
+      >
         <el-table-column prop="index" label="序号" width="50" align="center"></el-table-column>
         <el-table-column prop="roleName" label="角色"></el-table-column>
         <el-table-column prop="createTime" label="创建时间"></el-table-column>
@@ -22,6 +23,32 @@
         </el-table-column>
       </el-table>
 
+<<<<<<< HEAD
+      <el-dialog title="修改角色信息 " :visible.sync="dialogFormVisible"  >
+      <el-form :model="form" style="margin-right:10%" > 
+        <el-form-item label="ID" :label-width="formLabelWidth">
+          <el-input v-model="form.id" autocomplete="off" style="width: 350px;"></el-input>
+        </el-form-item>
+        <el-form-item label="描述" :label-width="formLabelWidth">
+          <el-input v-model="form.description" autocomplete="off" style="width: 350px;"></el-input>
+        </el-form-item>
+         <el-form-item label="角色" :label-width="formLabelWidth" style="margin-left: 0px;margin-bottom: 25px">
+          <el-input v-model="form.roleName" autocomplete="off" style="width: 350px;"></el-input>
+        </el-form-item>
+         <el-form-item label="昵称" :label-width="formLabelWidth">
+          <el-input v-model="form.nickname" autocomplete="off" style="width: 350px;"></el-input>
+        </el-form-item>
+        
+        
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+         
+        <el-button @click="dialogFormVisible = false">取 消</el-button>
+        <el-button type="primary" @click="confirm()">确 定</el-button>
+  
+      </div>
+    </el-dialog>
+=======
       <el-dialog title="修改用户信息 " :visible.sync="dialogFormVisible">
         <el-tabs v-model="activeName">
           <el-tab-pane label="基本信息" name="info">
@@ -59,6 +86,7 @@
           <el-button type="primary" @click="confirm()">确 定</el-button>
         </div>
       </el-dialog>
+>>>>>>> 01bcf46efe827f5399c8228ea509a3479aca8731
     </div>
   </div>
 </template>
@@ -87,7 +115,7 @@ export default {
       data: [
         {
           id: 1,
-          label: "一级2",
+          label: "一级 2",
           children: [
             {
               id: 3,
@@ -121,7 +149,7 @@ export default {
         },
         {
           id: 1,
-          label: "一�2",
+          label: "一级 2",
           children: [
             {
               id: 3,
@@ -173,9 +201,9 @@ export default {
           );
           this.signData[i].index = i + 1;
           if (this.signData[i].enabled) {
-            this.signData[i].enabled =  "是";
+            this.signData[i].enabled = "是";
           } else {
-            this.signData[i].enabled =  "否";
+            this.signData[i].enabled = "否";
           }
         }
       });
@@ -212,7 +240,7 @@ export default {
     },
 
     handleClick(id) {
-      this.$confirm("此操作将永久删除该用� 是否继续?", "提示", {
+      this.$confirm("此操作将永久删除该用户, 是否继续?", "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
         type: "warning"
