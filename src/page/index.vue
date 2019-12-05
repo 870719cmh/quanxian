@@ -6,9 +6,10 @@
       <i class="el-icon-s-data"></i>
       <div class="right">
         <button>
-          <i class="el-icon-user-solid"></i>admin
+          <i class="el-icon-user-solid"></i>
+          {{ username }}
         </button>
-        <button>
+        <button @click="loginOut">
           <i class="el-icon-switch-button"></i>退出
         </button>
       </div>
@@ -20,11 +21,12 @@
 </template>
 
 <script>
+import api from "@/API/api";
 export default {
   name: "index",
   data() {
     return {
-      data: null
+      username: ""
     };
   },
   watch: {
@@ -32,7 +34,23 @@ export default {
       console.log(to);
     }
   },
+   created() {
+    if (!localStorage.getItem("access_token")) {
+      this.$router.push({ name: "login" });
+    }
+  },
+   mounted() {
+    this.username = localStorage.getItem("name");
+  },
   methods: {
+    //退出登录
+    loginOut(){
+      api.logout().then(Response=>{
+        localStorage.removeItem("access_token");
+        localStorage.removeItem("name");
+        this.$router.push({ name: "Alogin" });
+      })
+    },
     handleSelect(index) {
       if (index == "Auser") {
         const { href } = this.$router.resolve({
