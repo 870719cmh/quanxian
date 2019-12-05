@@ -97,6 +97,11 @@ export default {
       parentId:parentId
     })
   },
+
+  //重置密码
+  revisePass(info){
+    return Vue.axios.post('auth/auth/v1/reset/pwd',info)
+  }
   
   
   
