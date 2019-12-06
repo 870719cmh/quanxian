@@ -36,10 +36,13 @@ export default {
 <style  scoped>
 span{
   color: #48576a;
-  margin-left: 120px;
+ 
+
 }
-/* #company>*{
-  font-size: 20px;
-} */
+#company>*{
+  font-size: 16px;
+  width: 50%;
+
+}
 
 </style>

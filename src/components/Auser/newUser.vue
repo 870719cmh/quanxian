@@ -2,19 +2,19 @@
   <div id="newUser">
     <!-- Form -->
     <el-button plain @click="dialogFormVisible = true" type="primary"  > <i class="el-icon-plus" style=" margin-left:-10px"></i><span>新增用户</span></el-button>
-    <el-dialog title="新增用户信息" :visible.sync="dialogFormVisible" style="margin-left:30%;">
-      <el-form :model="form" style="margin-left:-10%;margin-right:10%" >
+    <el-dialog title="新增用户信息" :visible.sync="dialogFormVisible" >
+      <el-form :model="form"  >
         <el-form-item label="用户名" :label-width="formLabelWidth">
           <el-input v-model="form.username" autocomplete="off" style="width: 350px;" prop='username'></el-input>
         </el-form-item>
          <el-form-item class="c1" label="手  机 " :label-width="formLabelWidth">
-          <el-input v-model="form.mobile" autocomplete="off" style="width: 350px;margin-left: 20px;" prop='mobile'></el-input>
+          <el-input v-model="form.mobile" autocomplete="off" style="width: 350px;" prop='mobile'></el-input>
         </el-form-item>
          <!-- <el-form-item class="c1" label="邮  箱 " :label-width="formLabelWidth">
           <el-input v-model="form.email" autocomplete="off" style="width: 350px;margin-left: 20px;" prop='email'></el-input>
         </el-form-item> -->
          <el-form-item class="c1" label="密  码 " :label-width="formLabelWidth">
-          <el-input v-model="form.password" autocomplete="off" style="width: 350px;margin-left: 20px;"></el-input>
+          <el-input v-model="form.password" autocomplete="off" style="width: 350px;"></el-input>
         </el-form-item>
         <el-form-item label="角色" :label-width="formLabelWidth">
           <el-select v-model="form.region" placeholder="请选择用户角色"  style="width: 200px;">

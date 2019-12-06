@@ -1,6 +1,6 @@
 <template>
   <div id="searchUser">
-      <el-input placeholder="请关键字查询" v-model="params.search"></el-input>
+      <el-input placeholder="请关键字查询" v-model="params.search" ></el-input>
   </div>
 </template>
 
@@ -19,5 +19,7 @@ export default {
 </script>
 
 <style scoped>
-
+#searchUser{
+  width: 80%;
+}
 </style>

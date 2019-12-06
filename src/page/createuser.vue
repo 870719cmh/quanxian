@@ -1,15 +1,17 @@
 <template>
   <div id="userSidebar">
-    <userSidebar style="width:10%;" />
+    <userSidebar style="width:200px"/>
     <div style="width:85%">
-      <div class="fu">
-        <searchUser id="searchUser" />
-        <company />
-        <div id="tab">
-          <el-button style="margin-left:40px" plain type="primary" ><i class="el-icon-search" style=" margin-left:-12px"></i><span>查询</span></el-button>
-          <newUser id="newUser"/>
-        </div>
-      </div>
+
+      <el-row id="fu">
+  <el-col :span="6"><div class="grid-content bg-purple"><searchUser id="searchUser" /></div></el-col>
+  <el-col :span="6"><div class="grid-content bg-purple-light"> <company /></div></el-col>
+  <el-col :span="2"><div class="grid-content bg-purple"><el-button id="el-bitton" plain type="primary" ><i class="el-icon-search"></i><span id="span">查询</span></el-button></div></el-col>
+  <el-col :span="2"><div class="grid-content bg-purple-light"> <newUser id="newUser"/></div></el-col>
+</el-row>
+
+
+      
       <userdetail />
     </div>
   </div>
@@ -35,7 +37,25 @@ export default {
 </script>
 
 <style scoped>
-.fu {
+
+ .el-row {
+    margin-bottom: 20px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+ 
+  .grid-content {
+    border-radius: 4px;
+    /* min-height:20%; */
+  }
+  .row-bg {
+    padding: 10px 0;
+    background-color: #f9fafc;
+  }
+
+
+#fu {
   display: flex;
   margin-top: 2%;
   margin-bottom: 1%;
@@ -43,14 +63,9 @@ export default {
 }
 #searchUser {
   padding-left: 3%;
-  width:400px;
+
 }
-#tab :first-child {
-  margin-left: 10px;
- 
-}
-#tab{
-   display: flex;
-}
+
+
 
 </style>

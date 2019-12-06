@@ -1,11 +1,11 @@
 <template>
   <div>
-      <userSidebar style="width:10%"/>
+      <userSidebar style="width:200px"/>
       <div class="d1">
           <div class="d2">
-            <searchUser style="width:400px"/>
-            <date  style="width:34%;margin-left:5%"/>
-            <el-button type="warning" plain style="margin-left:3%;">异常日志</el-button>
+            <searchUser style="width:20%"/>
+            <date  style="margin-left:5%"/>
+            <el-button type="warning" plain style="margin-left:3%;height:30%;width:100px;">异常日志</el-button>
           </div>
         <logdetail/>
       </div>
@@ -36,6 +36,7 @@ export default {
     margin-left:6%;
     margin-top:2%;
     margin-bottom: 1%;
+    
 }
 
 

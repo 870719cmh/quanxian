@@ -1,6 +1,6 @@
 <template>
 <div id="institution">
-<userSidebar style="width:10%"/>
+<userSidebar style="width:200px"/>
   <div class="s2">
     <div style=" display: flex; padding-left: 3%;">
       <searchUser style="width:400px"></searchUser>

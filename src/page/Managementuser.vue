@@ -1,6 +1,6 @@
 <template>
   <div>
-    <userSidebar style="width:10%;" />
+    <userSidebar style="width:200px;" />
     <div class="d2">
       <div id="d3">
         <searchUser style="width:400px" />
