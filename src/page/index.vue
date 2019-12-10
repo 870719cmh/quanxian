@@ -12,6 +12,15 @@
         <button @click="loginOut">
           <i class="el-icon-switch-button"></i>退出
         </button>
+        <button>
+          <i class="el-icon-s-operation"></i>
+        <a href="http://dev.yyccc.cn:8001/index.html">项目绑定</a>
+        </button>
+        
+         <button>
+          <i class="el-icon-s-ticket"></i>
+         <a href="http://dev.yyccc.cn:8002/index.html">项目查看</a>
+        </button>
       </div>
     </div>
     <router-view
@@ -51,6 +60,9 @@ export default {
         this.$router.push({ name: "Alogin" });
       })
     },
+  
+ 
+
     handleSelect(index) {
       if (index == "Auser") {
         const { href } = this.$router.resolve({
